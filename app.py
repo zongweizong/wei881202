@@ -24,7 +24,7 @@ def cache_users_stock():
     for i in range(len(nameList)):
         collect = db[nameList[i]]
         cel = list(collect.find({'tag':'stock'}))
-        users.append(len)
+        users.append(cel)
     return users
 
 #油價查詢
