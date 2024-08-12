@@ -169,6 +169,9 @@ def handle_message(event):
 
      ################################股票提醒################################
 
+    if re.match('關閉提醒',msg):
+        import schedule
+        schedule.clear()
     if re.match("股價提醒", msg):
         import schedule
         import time
@@ -214,6 +217,7 @@ def handle_message(event):
         while True: 
             schedule.run_pending()
             time.sleep(1)
+            
     #新增使用者關注的股票到mongodb EX:關注2330>XXX
     if re.match('關注[0-9]{4}[<>][0-9]' ,msg):
         stockNumber = msg[2:6]
