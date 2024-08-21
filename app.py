@@ -223,6 +223,9 @@ def handle_message(event):
         content = Msg_Template.youtube_channel()
         line_bot_api.push_message(uid, content)
         return 0
+    if re.math("分析趨勢圖",msg):
+        content = Msg_Template.stock_reply_other()
+        line_bot_api.push_message(event.reply_token,message)
     
     ############################### 股票區 ################################
     
@@ -283,7 +286,7 @@ def handle_message(event):
         return 0
     
     if event.message.text[:2].upper() == "@K" : #這段主要在畫Ｋ線圖
-        input_word = event.message.text.replace(" ","") #合併字串取消空白
+        input_word = event.message.text.replace("  ","") #合併字串取消空白
         stock_name =input_word[2:6]#2330
         start_date =input_word[6:]
         content = plot_stock_k_chart(IMGUR_CLIENT_ID,stock_name,start_date)
