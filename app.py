@@ -262,8 +262,8 @@ def handle_message(event):
                                 uri='https://tw.stock.yahoo.com/news/'
                             ),
                             URIAction(
-                                label='粉絲團',
-                                uri='https://zh-tw.facebook.com/lccnet10/'
+                                label='Netflix',
+                                uri='https://liff.line.me/2006134072-NvwPvowO'
                             )
                         ]
                     ),
