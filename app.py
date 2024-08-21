@@ -169,7 +169,7 @@ def handle_message(event):
             line_bot_api.push_message(uid, TextSendMessage(content))
         return 0
     ######################## 使用說明 選單 油價查詢################################
-    if event.message.text == "油價報你知":
+    if event.message.text == "油價資訊":
         content = oil_price()
         line_bot_api.reply_message(
             event.reply_token,
@@ -250,16 +250,16 @@ def handle_message(event):
             columns=[
                 CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/bGyGdb1.jpg',
-                        title='選擇服務',
-                        text='請選擇',
+                        title='常用網站',
+                        text='請選擇😍😍',
                         actions=[
                             MessageAction(
-                                label='開始玩',
-                                text='開始玩'
+                                label='facebook',
+                                text='https://www.facebook.com/'
                             ),
                             URIAction(
-                                label='財經新聞',
-                                uri='https://tw.stock.yahoo.com/news/'
+                                label='youtube',
+                                uri='https://www.youtube.com/'
                             ),
                             URIAction(
                                 label='Netflix',
