@@ -28,7 +28,7 @@ def stock_reply_rate():
     return text_message
 
 def stock_reply_other():
-    content_text = "看一下分析趨勢圖吧！！"
+    content_text = "分析趨勢圖"
     text_message = TextSendMessage(
                                 text = content_text ,
                                 quick_reply=QuickReply(
