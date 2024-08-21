@@ -140,7 +140,7 @@ def handle_message(event):
     user_name = profile.display_name #使用者名稱
     
     ######################## 匯率區 ##############################################    
-    if re.match("匯率大小事", msg):
+    if re.match("匯率查詢", msg):
         btn_msg = Msg_Template.stock_reply_rate()
         line_bot_api.push_message(uid, btn_msg)
         return 0
@@ -210,13 +210,13 @@ def handle_message(event):
             line_bot_api.push_message(uid, TextSendMessage(content))
         return 0
     ######################## 使用說明 選單 油價查詢################################
-    if event.message.text == "油價資訊":
+    if event.message.text == "油價查詢":
         content = oil_price()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-    if event.message.text == "使用說明":
+    if event.message.text == "機器人說明書":
         Usage(event)
         print(user_name)
     if re.match("理財YOUTUBER推薦", msg):
