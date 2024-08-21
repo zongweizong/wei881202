@@ -255,11 +255,11 @@ def handle_message(event):
                         actions=[
                             MessageAction(
                                 label='facebook',
-                                text='https://www.facebook.com/'
+                                text='https://liff.line.me/2006134072-OpdQxRdM'
                             ),
                             URIAction(
                                 label='youtube',
-                                uri='https://www.youtube.com/'
+                                uri='https://liff.line.me/2006134072-qYoJOyoL'
                             ),
                             URIAction(
                                 label='Netflix',
