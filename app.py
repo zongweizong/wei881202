@@ -253,9 +253,9 @@ def handle_message(event):
                         title='常用網站',
                         text='請選擇😍😍',
                         actions=[
-                            MessageAction(
+                            URIAction(
                                 label='facebook',
-                                text='https://liff.line.me/2006134072-OpdQxRdM'
+                                uri='https://liff.line.me/2006134072-OpdQxRdM'
                             ),
                             URIAction(
                                 label='youtube',
