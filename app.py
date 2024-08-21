@@ -224,8 +224,8 @@ def handle_message(event):
         line_bot_api.push_message(uid, content)
         return 0
     if re.match("分析趨勢圖",msg):
-        content = Msg_Template.stock_reply_other()
-        line_bot_api.push_message(event.reply_token,content)
+        messages = Msg_Template.stock_reply_other()
+        line_bot_api.push_message(event.reply_token,messages)
     
     ############################### 股票區 ################################
     
