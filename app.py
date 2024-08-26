@@ -14,9 +14,11 @@ import Msg_Template
 import EXRate
 import mongodb
 import twder
+import requests,json,time
 
 app = Flask(__name__)
 IMGUR_CLIENT_ID = '4670b4b0bf170b4'
+access_token = ''
 
 
 import yfinance as yf
@@ -58,6 +60,19 @@ def plot_stock_k_chart(IMGUR_CLIENT_ID,stock = "0050",date_from='2020-01-01'):
         print(f"錯誤: {e}")
         return None
     
+
+def reply_image(msg,rk,token):
+    headers = {'Authorization':f'Bearer {token}', 'Content-Type':'application/json'}
+    body = {
+    'replyToken' :rk,
+    'messages': [{
+            'type': 'image',
+            'originalContentUrl': msg,
+            "previewImageUrl": msg
+        }]
+    }
+    req = requests.request('POST', 'https://api.line.me/v2/bot/message/reply', headers = headers, data=json.dumps(body).encode('utf-8'))
+    print(req.text)
 # 抓使用者設定它關心的匯率
 def cache_users_currency():
     db=mongodb.constructor_currency()
@@ -123,9 +138,18 @@ def callback():
     # handle webhook body
     try:
         handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
-
+        json_data = json.loads(body)
+        reply_token = json_data['events'][0]['replyToken']
+        user_id = json_data['events'][0]['soure']['userId']
+        print(json_data)
+        if 'message' in json_data['events'][0]:
+            if json_data['events'][0]['message']['type'] == 'text':
+                text = json_data['events'][0]['message']['text']
+                if text == '雷達回波圖' or text == '雷達回波':
+                    reply_image(f'https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png?{time.time_ns()}',json_data,reply_token)
+    
+    except:
+        print('error')
     return 'OK'
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
