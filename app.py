@@ -14,7 +14,7 @@ import Msg_Template
 import EXRate
 import mongodb
 import twder
-import requests,json,time
+import json,time
 import place
 app = Flask(__name__)
 IMGUR_CLIENT_ID = '4670b4b0bf170b4'
