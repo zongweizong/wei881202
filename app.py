@@ -358,7 +358,7 @@ def handle_message(event):
                             URIAction(
                                 label='Netflix',
                                 uri='https://liff.line.me/2006134072-NvwPvowO'
-                            ),
+                            )
                             # URIAction(
                             #     label='Youtube',
                             #     uri='https://liff.line.me/2006134072-qYoJOyoL'
