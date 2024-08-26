@@ -15,11 +15,11 @@ import EXRate
 import mongodb
 import twder
 import requests,json,time
-
+import place
 app = Flask(__name__)
 IMGUR_CLIENT_ID = '4670b4b0bf170b4'
-access_token = ''
-
+access_token = 'aNQvaXsXOedUChNcmQryfaaFLckYzvQ+Y6wi28/fq0vSDTd18PH+SaNZc+y0VJaxrrvGN8292ki0utK+Gx1wyFVJWfgHBc9AQkpbkz0BAzBqrq0yTbhJI2glggHON/UCWs3JWf0ETfbcDb9BbyAXyQdB04t89/1O/w1cDnyilFU='
+mat_d = {}
 
 import yfinance as yf
 import mplfinance as mpf
@@ -506,6 +506,21 @@ def handle_message(event):
         while True: 
             schedule.run_pending()
             time.sleep(1)
+
+
+    #冬水*****水*****水****weather**冰水冰*水*水*水水水*水冬水冰井＃固文遐單
+    # 第一層-最新氣象->4格圖片Flex Messag
+    if re.match('最新氣象|查詢天氣|天氣查詢|weather|weather',msg):
+        content= place.img_Carousel() #呼叫4格圖片Flex Message
+        line_bot_api.reply_message(event.reply_token, content)
+        return 0
+    ##########井#######并####1。园归夺天天条-OK#井##井###井##井##井##游##井林## 
+    # 1.第二層-即時天氣->呼叫quick_reply
+    if re.match('即時天氣|即時氣象',msg):
+        mat_d[uid] = '即時天氣'
+        content = place.quick_reply_weather(mat_d[uid])
+        line_bot_api.reply_message(event.reply_token, content)
+    return 0
 
 
 import os
