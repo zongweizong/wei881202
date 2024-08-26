@@ -84,14 +84,14 @@ def cache_users_currency():
         users.append(cel)
     return users
 def Usage(event):
-    push_msg(event,"    🌟🌟 查詢方法 🌟🌟   \
+    push_msg(event,"    🚬 🚬 🚬 查詢方法 🚬 🚬 🚬   \
                     \n\
-                    \n☢本機器人可查詢油價及匯率☢\
+                    \n☢雖然我是殺手，但我可查詢油價及匯率☢\
                     \n\
-                    \n⑥ 油價通知 ➦➦➦ 輸入油價報你知\
-                    \n⑥ 匯率通知 ➦➦➦ 輸入查詢匯率\
-                    \n⑦ 匯率兌換 ➦➦➦ 換匯USD/TWD\
-                    \n⑦ 自動推播 ➦➦➦ 自動推播")
+                    \n 油價通知 ➦➦➦ 輸入油價查詢\
+                    \n 匯率通知 ➦➦➦ 輸入查詢匯率\
+                    \n 匯率兌換 ➦➦➦ 換匯USD/TWD\
+                    \n 自動推播 ➦➦➦ 自動推播")
 # 監聽所有來自 /callback 的 Post Request
 def push_msg(event,msg):
     try:
@@ -183,7 +183,7 @@ def handle_message(event):
     user_name = profile.display_name #使用者名稱
     
     ######################## 匯率區 ##############################################    
-    if re.match("匯率查詢", msg):
+    if re.match("查詢匯率", msg):
         btn_msg = Msg_Template.stock_reply_rate()
         line_bot_api.push_message(uid, btn_msg)
         return 0
@@ -345,7 +345,7 @@ def handle_message(event):
                 CarouselColumn(
                         thumbnail_image_url='https://imgur.com/NpSm67w',
                         title='常用網站',
-                        text='請選擇😍😍',
+                        text='請選擇你要的項目🤫🤫',
                         actions=[
                             URIAction(
                                 label='Facebook',
@@ -359,20 +359,20 @@ def handle_message(event):
                                 label='Netflix',
                                 uri='https://liff.line.me/2006134072-NvwPvowO'
                             ),
-                            URIAction(
-                                label='Youtube',
-                                uri='https://liff.line.me/2006134072-qYoJOyoL'
-                            )
+                            # URIAction(
+                            #     label='Youtube',
+                            #     uri='https://liff.line.me/2006134072-qYoJOyoL'
+                            # )
                         ]
                     ),
                 CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/N9TKsay.jpg',
-                        title='選擇服務',
-                        text='請選擇',
+                        title='生活工具',
+                        text='點選你要的項目🤫🤫',
                         actions=[
                             MessageAction(
-                                label='other bot',
-                                text='imgur bot'
+                                label='youtube 程式教學頻道',
+                                uri='https://www.youtube.com/channel/UCPhn2rCqhu0HdktsFjixahA'
                             ),
                             MessageAction(
                                 label='油價查詢',
@@ -386,8 +386,8 @@ def handle_message(event):
                     ),
                 CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/rwR2yUr.jpg',
-                        title='選擇服務',
-                        text='請選擇',
+                        title='請選擇D槽',
+                        text='請選擇🤫🤫',
                         actions=[
                             URIAction(
                                 label='匯率分享',
