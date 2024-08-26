@@ -134,23 +134,42 @@ def callback():
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
-
-    # handle webhook body
     try:
         handler.handle(body, signature)
+        # 轉換內容為json格式
         json_data = json.loads(body)
+        # 取得回傳訊息的Token (reply mseeage 使用)
         reply_token = json_data['events'][0]['replyToken']
-        user_id = json_data['events'][0]['soure']['userId']
+        # 取得使用者 ID (push message 使用)
+        user_id = json_data['events'][0]['source']['userId']
         print(json_data)
         if 'message' in json_data['events'][0]:
             if json_data['events'][0]['message']['type'] == 'text':
+                # 取出文字
                 text = json_data['events'][0]['message']['text']
+                # 如果是雷達回波圖相關的文字
                 if text == '雷達回波圖' or text == '雷達回波':
-                    reply_image(f'https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png?{time.time_ns()}',json_data,reply_token)
-    
-    except:
+                    #傳送雷達回波圖
+                    reply_image(f'https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png?{time.time_ns()}',reply_token,access_token)
+    except :
         print('error')
     return 'OK'
+    # handle webhook body
+    # try:
+    #     handler.handle(body, signature)
+    #     json_data = json.loads(body)
+    #     reply_token = json_data['events'][0]['replyToken']
+    #     user_id = json_data['events'][0]['soure']['userId']
+    #     print(json_data)
+    #     if 'message' in json_data['events'][0]:
+    #         if json_data['events'][0]['message']['type'] == 'text':
+    #             text = json_data['events'][0]['message']['text']
+    #             if text == '雷達回波圖' or text == '雷達回波':
+    #                 reply_image(f'https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png?{time.time_ns()}',json_data,reply_token)
+    
+    # except:
+    #     print('error')
+    # return 'OK'
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
