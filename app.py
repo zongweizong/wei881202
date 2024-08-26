@@ -343,12 +343,12 @@ def handle_message(event):
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/bGyGdb1.jpg',
+                        thumbnail_image_url='https://imgur.com/NpSm67w',
                         title='常用網站',
                         text='請選擇😍😍',
                         actions=[
                             URIAction(
-                                label='facebook',
+                                label='Facebook',
                                 uri='https://liff.line.me/2006134072-QYmMEpmK'
                             ),
                             URIAction(
@@ -360,7 +360,7 @@ def handle_message(event):
                                 uri='https://liff.line.me/2006134072-NvwPvowO'
                             ),
                             URIAction(
-                                label='youtube',
+                                label='Youtube',
                                 uri='https://liff.line.me/2006134072-qYoJOyoL'
                             )
                         ]
