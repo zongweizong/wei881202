@@ -349,15 +349,19 @@ def handle_message(event):
                         actions=[
                             URIAction(
                                 label='facebook',
-                                uri='https://liff.line.me/2006134072-OpdQxRdM'
+                                uri='https://liff.line.me/2006134072-QYmMEpmK'
                             ),
                             URIAction(
-                                label='youtube',
-                                uri='https://liff.line.me/2006134072-qYoJOyoL'
+                                label='instgram',
+                                uri='https://liff.line.me/2006134072-2zLJ3ALp'
                             ),
                             URIAction(
                                 label='Netflix',
                                 uri='https://liff.line.me/2006134072-NvwPvowO'
+                            ),
+                            URIAction(
+                                label='youtube',
+                                uri='https://liff.line.me/2006134072-qYoJOyoL'
                             )
                         ]
                     ),
