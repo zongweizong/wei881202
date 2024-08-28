@@ -337,25 +337,42 @@ def handle_message(event):
         alt_text='目錄 template',
         template=CarouselTemplate(
             columns=[
-                CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/NpSm67w.jpg',
-                        title='常用網站',
-                        text='請選擇你要使用的網站',
+                CarouselColumn(thumbnail_image_url='https://i.imgur.com/NpSm67w.png',
+                        title='選擇服務',
+                        text='請選擇',
                         actions=[
                             MessageAction(
-                                label='Facebook',
-                                uri='https://www.facebook.com/'
+                                label='開始玩',
+                                text='開始玩'
                             ),
                             URIAction(
-                                label='Instagram',
-                                uri='https://www.instagram.com/'
+                                label='購物網站',
+                                uri='https://liff.line.me/2006101176-BXK5NLKa'
                             ),
                             URIAction(
-                                label='Youtube',
-                                uri='https://www.youtube.com/'
+                                label='粉絲團',
+                                uri='https://liff.line.me/2006101176-kpER9pEB'
                             )
                         ]
                     ),
+                    #     thumbnail_image_url='https://i.imgur.com/NpSm67w.jpg',
+                    #     title='常用網站',
+                    #     text='請選擇你要使用的網站',
+                    #     actions=[
+                    #         MessageAction(
+                    #             label='Facebook',
+                    #             uri='https://www.facebook.com/'
+                    #         ),
+                    #         URIAction(
+                    #             label='Instagram',
+                    #             uri='https://www.instagram.com/'
+                    #         ),
+                    #         URIAction(
+                    #             label='Youtube',
+                    #             uri='https://www.youtube.com/'
+                    #         )
+                    #     ]
+                    # ),
                 CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/N9TKsay.jpg',
                         title='選擇服務',
@@ -545,7 +562,7 @@ def handle_image_message(event):
 
 import os
 if __name__ == "__main__":
-    app.run(8080)
+    app.run()
 
 #https://opendata.cwb.gov.tw/index
 #CWA-C07BDC7E-7138-4068-BCEC-13C15865812A
