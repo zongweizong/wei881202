@@ -16,14 +16,38 @@ import mongodb
 import twder
 import json,time
 import place
-app = Flask(__name__)
-IMGUR_CLIENT_ID = '4670b4b0bf170b4'
-access_token = 'aNQvaXsXOedUChNcmQryfaaFLckYzvQ+Y6wi28/fq0vSDTd18PH+SaNZc+y0VJaxrrvGN8292ki0utK+Gx1wyFVJWfgHBc9AQkpbkz0BAzBqrq0yTbhJI2glggHON/UCWs3JWf0ETfbcDb9BbyAXyQdB04t89/1O/w1cDnyilFU='
-mat_d = {}
-
 import yfinance as yf
 import mplfinance as mpf
 import pyimgur
+import io
+import os
+import numpy as np
+# from tensorflow.keras.models import load_model
+from PIL import Image
+app = Flask(__name__)
+IMGUR_CLIENT_ID = '4670b4b0bf170b4'
+access_token = 'aNQvaXsXOedUChNcmQryfaaFLckYzvQ+Y6wi28/fq0vSDTd18PH+SaNZc+y0VJaxrrvGN8292ki0utK+Gx1wyFVJWfgHBc9AQkpbkz0BAzBqrq0yTbhJI2glggHON/UCWs3JWf0ETfbcDb9BbyAXyQdB04t89/1O/w1cDnyilFU='
+channel_secret = '753fff928d206cda0db7a5b2f8271206'
+mat_d = {}
+# **************   CNN   ************* #
+#加載以訓練的CNN模型
+# model = load_model("mnist_cnn_model.h5")
+
+
+def prepeocess_image(image):
+    
+    """
+    預處理上傳的圖像，使其符合CNN模型的輸出要求
+    """
+
+    image = image.convert('L')
+    image = image.resize((28,28))
+    image = np.array(image)
+    image = image / 255.0
+    image = np.expand_dims(image,axls= 0)
+    image = np.expand_dims(image,axls= -1)
+    return image
+
 
 def plot_stock_k_chart(IMGUR_CLIENT_ID,stock = "0050",date_from='2020-01-01'):
     """
@@ -134,42 +158,14 @@ def callback():
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
+
+
     try:
         handler.handle(body, signature)
-        # 轉換內容為json格式
-        json_data = json.loads(body)
-        # 取得回傳訊息的Token (reply mseeage 使用)
-        reply_token = json_data['events'][0]['replyToken']
-        # 取得使用者 ID (push message 使用)
-        user_id = json_data['events'][0]['source']['userId']
-        print(json_data)
-        if 'message' in json_data['events'][0]:
-            if json_data['events'][0]['message']['type'] == 'text':
-                # 取出文字
-                text = json_data['events'][0]['message']['text']
-                # 如果是雷達回波圖相關的文字
-                if text == '雷達回波圖' or text == '雷達回波':
-                    #傳送雷達回波圖
-                    reply_image(f'https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png?{time.time_ns()}',reply_token,access_token)
-    except :
-        print('error')
+    except InvalidSignatureError:
+        abort(400)
+
     return 'OK'
-    # handle webhook body
-    # try:
-    #     handler.handle(body, signature)
-    #     json_data = json.loads(body)
-    #     reply_token = json_data['events'][0]['replyToken']
-    #     user_id = json_data['events'][0]['soure']['userId']
-    #     print(json_data)
-    #     if 'message' in json_data['events'][0]:
-    #         if json_data['events'][0]['message']['type'] == 'text':
-    #             text = json_data['events'][0]['message']['text']
-    #             if text == '雷達回波圖' or text == '雷達回波':
-    #                 reply_image(f'https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png?{time.time_ns()}',json_data,reply_token)
-    
-    # except:
-    #     print('error')
-    # return 'OK'
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
