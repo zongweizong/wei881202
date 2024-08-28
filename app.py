@@ -107,14 +107,14 @@ def cache_users_currency():
         users.append(cel)
     return users
 def Usage(event):
-    push_msg(event,"    🚬 🚬 🚬 殺手機器人說明 🚬 🚬 🚬   \
+    push_msg(event,"   🚬 🚬 🚬 殺手機器人說明 🚬 🚬 🚬   \
                     \n\
-                    \n 使用者您好，雖然我是一名殺手級選手🥷🏼，但我可以為您查詢你所要的資訊\
+                    \n使用者您好，雖然我是一名殺手級選手🥷🏼，但我可以為您查詢你所要的資訊\
                     \n\
-                    \n 油價通知通知📣📣 ➡️➡️➡️ 輸入🟰油價查詢\
-                    \n 匯率通知通知通知🔊🔊 ➦➦➦ 輸入🟰查詢匯率\
-                    \n 匯率兌換💵💵 ➦➦➦ 換匯USD/TWD\
-                    \n 自動推播🔊🔊 ➦➦➦ 自動推播")
+                    \n 油價通知通知📣📣 ➡️➡️➡️ 輸入🟰油價查詢\
+                    \n 匯率通知通知通知🔊🔊 ➦➦➦ 輸入🟰查詢匯率\
+                    \n 匯率兌換💵💵 ➦➦➦ 換匯USD/TWD\
+                    \n 自動推播🔊🔊 ➦➦➦ 自動推播")
 # 監聽所有來自 /callback 的 Post Request
 def push_msg(event,msg):
     try:
@@ -254,7 +254,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-    if event.message.text == "殺手機器人說明書":
+    if event.message.text == "殺手說明書":
         Usage(event)
         print(user_name)
     if re.match("理財YOUTUBER推薦", msg):
@@ -338,7 +338,7 @@ def handle_message(event):
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/NpSm67w.png',
+                        thumbnail_image_url='https://i.imgur.com/NpSm67w.jpg',
                         title='常用網站',
                         text='請選擇你要使用的網站',
                         actions=[
