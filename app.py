@@ -86,7 +86,7 @@ def cache_users_currency():
 def Usage(event):
     push_msg(event,"    🚬 🚬 🚬 查詢方法 🚬 🚬 🚬   \
                     \n\
-                    \n☢雖然我是殺手，但我可查詢油價及匯率☢\
+                    \n☢雖然我是殺手,但我可查詢油價及匯率☢\
                     \n\
                     \n 油價通知 ➦➦➦ 輸入油價查詢\
                     \n 匯率通知 ➦➦➦ 輸入查詢匯率\
@@ -343,7 +343,7 @@ def handle_message(event):
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                        thumbnail_image_url='https://imgur.com/NpSm67w',
+                        thumbnail_image_url='https://i.imgur.com/NpSm67w.jpg',
                         title='常用網站',
                         text='請選擇你要的項目🤫🤫',
                         actions=[
@@ -359,10 +359,7 @@ def handle_message(event):
                                 label='Netflix',
                                 uri='https://liff.line.me/2006134072-NvwPvowO'
                             )
-                            # URIAction(
-                            #     label='Youtube',
-                            #     uri='https://liff.line.me/2006134072-qYoJOyoL'
-                            # )
+                            
                         ]
                     ),
                 CarouselColumn(
