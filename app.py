@@ -34,7 +34,7 @@ mat_d = {}
 model = load_model("mnist_cnn_model.h5")
 
 
-def prepeocess_image(image):
+def preprocess_image(image):
     
     """
     預處理上傳的圖像，使其符合CNN模型的輸出要求
@@ -528,6 +528,21 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, content)
     return 0
 
+
+@handler.add(MessageEvent,message= ImageMessage)
+def handle_image_message(event):
+    message_content = line_bot_api.get_message_content(event.message,id)
+    imge = Image.open(io.BytesIO(message_content.content))
+
+    image = preprocess_image(image)
+
+    prediction = model.predict(image)
+    digit = np.argmax(prediction)
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=f'預測的數字是:{digit}')
+    )
 
 import os
 if __name__ == "__main__":
