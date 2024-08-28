@@ -545,7 +545,7 @@ def handle_image_message(event):
 
 import os
 if __name__ == "__main__":
-    app.run()
+    app.run(8080)
 
 #https://opendata.cwb.gov.tw/index
 #CWA-C07BDC7E-7138-4068-BCEC-13C15865812A
