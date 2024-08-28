@@ -22,7 +22,7 @@ import pyimgur
 import io
 import os
 import numpy as np
-# from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 from PIL import Image
 app = Flask(__name__)
 IMGUR_CLIENT_ID = '4670b4b0bf170b4'
@@ -31,7 +31,7 @@ channel_secret = '753fff928d206cda0db7a5b2f8271206'
 mat_d = {}
 # **************   CNN   ************* #
 #加載以訓練的CNN模型
-# model = load_model("mnist_cnn_model.h5")
+model = load_model("mnist_cnn_model.h5")
 
 
 def prepeocess_image(image):
@@ -339,33 +339,32 @@ def handle_message(event):
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/N9TKsay.jpg',
-                        title='常用網站',
-                        text='請選擇你要的項目🤫🤫',
+                        thumbnail_image_url='https://i.imgur.com/bGyGdb1.jpg',
+                        title='選擇服務',
+                        text='請選擇',
                         actions=[
-                            URIAction(
-                                label='Facebook',
-                                uri='https://liff.line.me/2006134072-QYmMEpmK'
+                            MessageAction(
+                                label='開始玩',
+                                text='開始玩'
                             ),
                             URIAction(
-                                label='instgram',
-                                uri='https://liff.line.me/2006134072-2zLJ3ALp'
+                                label='購物網站',
+                                uri='https://liff.line.me/2006101176-BXK5NLKa'
                             ),
                             URIAction(
-                                label='Netflix',
-                                uri='https://liff.line.me/2006134072-NvwPvowO'
+                                label='粉絲團',
+                                uri='https://liff.line.me/2006101176-kpER9pEB'
                             )
-                            
                         ]
                     ),
                 CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/N9TKsay.jpg',
-                        title='生活工具',
-                        text='點選你要的項目🤫🤫',
+                        title='選擇服務',
+                        text='請選擇',
                         actions=[
                             MessageAction(
-                                label='youtube 程式教學頻道',
-                                uri='https://www.youtube.com/channel/UCPhn2rCqhu0HdktsFjixahA'
+                                label='other bot',
+                                text='imgur bot'
                             ),
                             MessageAction(
                                 label='油價查詢',
@@ -379,8 +378,8 @@ def handle_message(event):
                     ),
                 CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/rwR2yUr.jpg',
-                        title='請選擇D槽',
-                        text='請選擇🤫🤫',
+                        title='選擇服務',
+                        text='請選擇',
                         actions=[
                             URIAction(
                                 label='匯率分享',
@@ -391,8 +390,8 @@ def handle_message(event):
                                 uri='https://www.ptt.cc/bbs/Finance/index.html'
                             ),
                             URIAction(
-                                label='youtube 程式教學分享頻道',
-                                uri='https://www.youtube.com/channel/UCPhn2rCqhu0HdktsFjixahA'
+                                label='youtube 影片',
+                                uri='https://liff.line.me/2006101176-3dPXp2PG'
                             )
                         ]
                     )
@@ -504,7 +503,17 @@ def handle_message(event):
             schedule.run_pending()
             time.sleep(1)
 
+    #*******************************雷達回波********************************#
 
+    if re.match('雷達回波',msg):
+        url = 'https://www.cwa.gov.tw/Data/radar/CV1_3600.png'
+        radar_img = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+        line_bot_api.reply_message(event.reply_token,radar_img)
+
+    #*******************************雷達回波********************************#
     #冬水*****水*****水****weather**冰水冰*水*水*水水水*水冬水冰井＃固文遐單
     # 第一層-最新氣象->4格圖片Flex Messag
     if re.match('最新氣象|查詢天氣|天氣查詢|weather|weather',msg):
