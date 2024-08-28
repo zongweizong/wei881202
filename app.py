@@ -20,7 +20,6 @@ import yfinance as yf
 import mplfinance as mpf
 import pyimgur
 import io
-import os
 import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image
@@ -108,14 +107,14 @@ def cache_users_currency():
         users.append(cel)
     return users
 def Usage(event):
-    push_msg(event,"    🚬 🚬 🚬 查詢方法 🚬 🚬 🚬   \
+    push_msg(event,"    🚬 🚬 🚬 殺手機器人說明 🚬 🚬 🚬   \
                     \n\
-                    \n☢雖然我是殺手,但我可查詢油價及匯率☢\
+                    \n 使用者您好，雖然我是一名殺手級選手🥷🏼，但我可以為您查詢你所要的資訊\
                     \n\
-                    \n 油價通知 ➦➦➦ 輸入油價查詢\
-                    \n 匯率通知 ➦➦➦ 輸入查詢匯率\
-                    \n 匯率兌換 ➦➦➦ 換匯USD/TWD\
-                    \n 自動推播 ➦➦➦ 自動推播")
+                    \n 油價通知通知📣📣 ➡️➡️➡️ 輸入🟰油價查詢\
+                    \n 匯率通知通知通知🔊🔊 ➦➦➦ 輸入🟰查詢匯率\
+                    \n 匯率兌換💵💵 ➦➦➦ 換匯USD/TWD\
+                    \n 自動推播🔊🔊 ➦➦➦ 自動推播")
 # 監聽所有來自 /callback 的 Post Request
 def push_msg(event,msg):
     try:
@@ -179,7 +178,7 @@ def handle_message(event):
     user_name = profile.display_name #使用者名稱
     
     ######################## 匯率區 ##############################################    
-    if re.match("查詢匯率", msg):
+    if re.match("匯率查詢", msg):
         btn_msg = Msg_Template.stock_reply_rate()
         line_bot_api.push_message(uid, btn_msg)
         return 0
@@ -255,7 +254,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-    if event.message.text == "機器人說明書":
+    if event.message.text == "殺手機器人說明書":
         Usage(event)
         print(user_name)
     if re.match("理財YOUTUBER推薦", msg):
@@ -339,21 +338,21 @@ def handle_message(event):
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/bGyGdb1.jpg',
-                        title='選擇服務',
-                        text='請選擇',
+                        thumbnail_image_url='https://i.imgur.com/NpSm67w.png',
+                        title='常用網站',
+                        text='請選擇你要使用的網站',
                         actions=[
                             MessageAction(
-                                label='開始玩',
-                                text='開始玩'
+                                label='Facebook',
+                                uri='https://www.facebook.com/'
                             ),
                             URIAction(
-                                label='購物網站',
-                                uri='https://liff.line.me/2006101176-BXK5NLKa'
+                                label='Instagram',
+                                uri='https://www.instagram.com/'
                             ),
                             URIAction(
-                                label='粉絲團',
-                                uri='https://liff.line.me/2006101176-kpER9pEB'
+                                label='Youtube',
+                                uri='https://www.youtube.com/'
                             )
                         ]
                     ),
