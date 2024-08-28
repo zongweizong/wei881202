@@ -344,15 +344,15 @@ def handle_message(event):
                         actions=[
                             MessageAction(
                                 label='Facebook',
-                                uri='https://www.facebook.com/'
+                                uri='https://liff.line.me/2006134072-QYmMEpmK'
                             ),
                             URIAction(
                                 label='Instagram',
-                                uri='https://www.instagram.com/'
+                                uri='https://liff.line.me/2006134072-2zLJ3ALp'
                             ),
                             URIAction(
                                 label='Youtube',
-                                uri='https://www.youtube.com/'
+                                uri='https://liff.line.me/2006134072-qYoJOyoL'
                             )
                         ]
                     ),
