@@ -107,14 +107,14 @@ def cache_users_currency():
         users.append(cel)
     return users
 def Usage(event):
-    push_msg(event,"   🚬 🚬 🚬 殺手機器人說明 🚬 🚬 🚬   \
+    push_msg(event," 🚬 🚬 🚬 殺手機器人說明 🚬 🚬 🚬   \
                     \n\
                     \n使用者您好，雖然我是一名殺手級選手🥷🏼，但我可以為您查詢你所要的資訊\
                     \n\
-                    \n 油價通知通知📣📣 ➡️➡️➡️ 輸入🟰油價查詢\
-                    \n 匯率通知通知通知🔊🔊 ➦➦➦ 輸入🟰查詢匯率\
-                    \n 匯率兌換💵💵 ➦➦➦ 換匯USD/TWD\
-                    \n 自動推播🔊🔊 ➦➦➦ 自動推播")
+                    \n 油價通知通知📣📣 ➡️➡️➡️ 輸入🟰油價查詢\
+                    \n 匯率通知通知通知🔊🔊 ➦➦➦ 輸入🟰查詢匯率\
+                    \n 匯率兌換💵💵 ➦➦➦ 換匯USD/TWD\
+                    \n 自動推播🔊🔊 ➦➦➦ 自動推播")
 # 監聽所有來自 /callback 的 Post Request
 def push_msg(event,msg):
     try:
@@ -337,42 +337,25 @@ def handle_message(event):
         alt_text='目錄 template',
         template=CarouselTemplate(
             columns=[
-                CarouselColumn(thumbnail_image_url='https://i.imgur.com/NpSm67w.png',
-                        title='選擇服務',
-                        text='請選擇',
+                CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/NpSm67w.png',
+                        title='常用網站',
+                        text='請選擇你要使用的網站',
                         actions=[
                             MessageAction(
-                                label='開始玩',
-                                text='開始玩'
+                                label='Facebook',
+                                uri='https://www.facebook.com/'
                             ),
                             URIAction(
-                                label='購物網站',
-                                uri='https://liff.line.me/2006101176-BXK5NLKa'
+                                label='Instagram',
+                                uri='https://www.instagram.com/'
                             ),
                             URIAction(
-                                label='粉絲團',
-                                uri='https://liff.line.me/2006101176-kpER9pEB'
+                                label='Youtube',
+                                uri='https://www.youtube.com/'
                             )
                         ]
                     ),
-                    #     thumbnail_image_url='https://i.imgur.com/NpSm67w.jpg',
-                    #     title='常用網站',
-                    #     text='請選擇你要使用的網站',
-                    #     actions=[
-                    #         MessageAction(
-                    #             label='Facebook',
-                    #             uri='https://www.facebook.com/'
-                    #         ),
-                    #         URIAction(
-                    #             label='Instagram',
-                    #             uri='https://www.instagram.com/'
-                    #         ),
-                    #         URIAction(
-                    #             label='Youtube',
-                    #             uri='https://www.youtube.com/'
-                    #         )
-                    #     ]
-                    # ),
                 CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/N9TKsay.jpg',
                         title='選擇服務',
