@@ -338,7 +338,7 @@ def handle_message(event):
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/NpSm67w.png',
+                        thumbnail_image_url='https://i.imgur.com/JfreHJs.png',
                         title='常用網站',
                         text='請選擇你要使用的網站',
                         actions=[
