@@ -107,7 +107,7 @@ def cache_users_currency():
         users.append(cel)
     return users
 def Usage(event):
-    push_msg(event," 🚬 🚬 殺手機器人說明 🚬 🚬   \
+    push_msg(event," 🚬 🚬 殺手BOT說明書 🚬 🚬   \
                     \n\
                     \n使用者您好，雖然我是一名殺手級選手🥷🏼，但我可以為您查詢你所要的資訊\
                     \n\
@@ -338,8 +338,8 @@ def handle_message(event):
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/JfreHJs.png',
-                        title='常用網站',
+                        thumbnail_image_url='https://i.imgur.com/j0udLKo.png',
+                        title='社群網站',
                         text='請選擇你要使用的網站',
                         actions=[
                             URIAction(
@@ -351,46 +351,46 @@ def handle_message(event):
                                 uri='https://liff.line.me/2006134072-2zLJ3ALp'
                             ),
                             URIAction(
+                                label='Twitter',
+                                uri='https://x.com/'
+                            )
+                        ]
+                    ),
+                CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/lmxC1Dy.png',
+                        title='影音網站',
+                        text='請選擇你要使用的網站',
+                        actions=[
+                            URIAction(
+                                label='Netflix',
+                                uri='https://www.netflix.com/browse'
+                            ),
+                            URIAction(
                                 label='Youtube',
-                                uri='https://liff.line.me/2006134072-qYoJOyoL'
+                                uri='https://www.youtube.com/'
+                            ),
+                            URIAction(
+                                label='Spotify',
+                                uri='https://open.spotify.com/'
                             )
                         ]
                     ),
                 CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/N9TKsay.jpg',
-                        title='選擇服務',
-                        text='請選擇',
-                        actions=[
-                            MessageAction(
-                                label='other bot',
-                                text='imgur bot'
-                            ),
-                            MessageAction(
-                                label='油價查詢',
-                                text='油價查詢'
-                            ),
-                            URIAction(
-                                label='奇摩股市',
-                                uri='https://tw.stock.yahoo.com/us/?s=NVS&tt=1'
-                            )
-                        ]
-                    ),
-                CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/rwR2yUr.jpg',
-                        title='選擇服務',
-                        text='請選擇',
+                        thumbnail_image_url='https://i.imgur.com/aLMBuVk.png',
+                        title='今天看啥片？',
+                        text='請選擇您今天要尻尻的網站',
                         actions=[
                             URIAction(
-                                label='匯率分享',
-                                uri='https://rate.bot.com.tw/xrt?Lang=zh-TW'
+                                label='漫畫',
+                                uri='https://hanime1.me/comics'
                             ),
                             URIAction(
-                                label='財經PTT',
-                                uri='https://www.ptt.cc/bbs/Finance/index.html'
+                                label='Japan video',
+                                uri='https://missav.com/genres?page=2'
                             ),
                             URIAction(
-                                label='youtube 影片',
-                                uri='https://liff.line.me/2006101176-3dPXp2PG'
+                                label='素人video',
+                                uri='https://ppp.porn/new/'
                             )
                         ]
                     )
