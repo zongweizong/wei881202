@@ -7,13 +7,13 @@ def stock_reply_rate():
                                    items=[
                                        QuickReplyButton(
                                                 action=MessageAction(
-                                                    label="💜💜查詢單一幣別匯率", 
-                                                    text="外幣及匯率",
+                                                    label="💜查詢幣別💜", 
+                                                    text="幣別種類",
                                                 )
                                        ),
                                        QuickReplyButton(
                                            action = MessageAction(
-                                               label="💜💜查詢幣別匯率",
+                                               label="💜查詢幣別匯率💜",
                                                text="匯率兌換",
                                                 )
                                        ),
