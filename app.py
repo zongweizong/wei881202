@@ -180,7 +180,7 @@ def handle_message(event):
     user_name = profile.display_name #使用者名稱
     
     ######################## 匯率區 ##############################################    
-    if re.match("匯率查詢", msg):
+    if re.match("查詢匯率", msg):
         btn_msg = Msg_Template.stock_reply_rate()
         line_bot_api.push_message(uid, btn_msg)
         return 0
@@ -217,7 +217,8 @@ def handle_message(event):
         content = mongodb.delete_my_allcurrency(user_name, uid)
         line_bot_api.push_message(uid, TextSendMessage(content))
         return 0
-    if re.match("CT[A-Z]{3}", msg):
+    ##############給匯率走勢圖#############
+    if re.match("CT[A-Z]{3}", msg):   
         currency = msg[2:5] # 外幣代號
         if EXRate.getCurrencyName(currency) == "無可支援的外幣":
             line_bot_api.push_message(uid, TextSendMessage('無可支援的外幣'))
@@ -259,10 +260,7 @@ def handle_message(event):
     if event.message.text == "殺手說明書":
         Usage(event)
         print(user_name)
-    if re.match("理財YOUTUBER推薦", msg):
-        content = Msg_Template.youtube_channel()
-        line_bot_api.push_message(uid, content)
-        return 0
+
     if re.match("分析趨勢圖",msg):
         message = Msg_Template.stock_reply_other()
         line_bot_api.reply_message(event.reply_token,message)
